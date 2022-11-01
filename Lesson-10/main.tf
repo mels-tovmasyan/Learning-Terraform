@@ -1,11 +1,11 @@
-#--------------------------------------------------
+#-------------------------------------------------
 # Provision Highly available WebServer in any Region
 # Create:
 #   - SG for WebServer
 #   - Launch Configuration using latest Amazon Linux 2 AMI
 #   - ASG with 2 AZs
 #   - Classic LB in 2 AZs
-#--------------------------------------------------
+#-------------------------------------------------
 
 provider "aws" {
   region = "eu-central-1"
