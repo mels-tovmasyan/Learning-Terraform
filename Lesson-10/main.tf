@@ -52,7 +52,7 @@ resource "aws_security_group" "webserver" {
 
 
 resource "aws_launch_configuration" "web" {
-  name = "WebServer"
+  name_prefix = "WebServer-LC"
   image_id = data.aws_ami.latest_amzn_linux_2.id
   instance_type = "t2.micro"
   security_groups = [aws_security_group.webserver.id]
@@ -64,7 +64,7 @@ resource "aws_launch_configuration" "web" {
 
 
 resource "aws_autoscaling_group" "web" {
-  name = "WebServers-ASG"
+  name_prefix = "ASG-${aws_launch_configuration.web.name}"
   launch_configuration = aws_launch_configuration.web.name
   min_size = 2
   max_size = 2
@@ -77,7 +77,6 @@ resource "aws_autoscaling_group" "web" {
     for_each = {
       Name = "WebServer"
       Owner = "Mels"
-      TAGKEY = "TAGVALUE"
     }
     content {
       key = tag.key
