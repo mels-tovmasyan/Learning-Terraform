@@ -1,7 +1,8 @@
-#Find most recent Amazon Linux 2, 
-#launch an instance using it
-#and print ami.id and ami.name
-
+# ---------------------------------------------------------
+# Find most recent Amazon Linux 2, 
+# launch an instance using it
+# and print ami.id and ami.name
+# ---------------------------------------------------------
 
 provider "aws" {
   region = "ca-central-1"
