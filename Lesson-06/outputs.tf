@@ -12,6 +12,6 @@ output "webserver_sg_id" {
 }
 
 output "webserver_sg_arn" {
-  value = aws_security_group.my_webserver.arn
+  value       = aws_security_group.my_webserver.arn
   description = "Webserver's SGs arn"
 }
