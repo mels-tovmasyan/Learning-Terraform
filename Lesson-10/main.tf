@@ -1,11 +1,11 @@
-#-------------------------------------------------
+# ---------------------------------------------------------
 # Provision Highly available WebServer in any Region
 # Create:
 #   - SG for WebServer
 #   - Launch Configuration using latest Amazon Linux 2 AMI
 #   - ASG with 2 AZs
 #   - Classic LB in 2 AZs
-#-------------------------------------------------
+# ---------------------------------------------------------
 
 provider "aws" {
   region = "eu-central-1"
@@ -20,8 +20,6 @@ data "aws_ami" "latest_amzn_linux_2" {
     values = ["amzn2-ami-kernel-5.10-*"]
   }
 }
-
-#--------------------------------------------------
 
 
 resource "aws_security_group" "webserver" {
@@ -120,6 +118,7 @@ resource "aws_default_subnet" "default_az1" {
 resource "aws_default_subnet" "default_az2" {
   availability_zone = data.aws_availability_zones.available.names[1]
 }
+
 
 output "Web_lb_url" {
   value = aws_elb.web.dns_name
