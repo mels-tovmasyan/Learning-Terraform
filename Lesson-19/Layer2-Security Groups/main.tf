@@ -33,7 +33,7 @@ resource "aws_security_group" "webserver_sg" {
     from_port   = 22
     to_port     = 22
     protocol    = "tcp"
-    cidr_blocks = [data.terraform_remote_state.network.outputs.vpc_cidr]
+    cidr_blocks = [data.terraform_remote_state.network.outputs.cidr_block]
   }
 
 

@@ -40,11 +40,9 @@ data "aws_ami" "latest_linux_eu" {
 resource "aws_instance" "secured_server" {
   ami                    = data.aws_ami.latest_linux_eu.id
   instance_type          = "t2.micro"
+  user_data              = file("user_data.sh")
   vpc_security_group_ids = [data.terraform_remote_state.servers.outputs.webserver_sg]
   subnet_id              = data.terraform_remote_state.network.outputs.public_subnet_ids[0]
 }
 
 
-output "aws_instance_secured_server" {
-  value = aws_instance.secured_server.id
-}
