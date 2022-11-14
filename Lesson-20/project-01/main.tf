@@ -21,20 +21,3 @@ module "vpc-prod" {
   public_subnet_cidrs  = ["10.10.1.0/24", "10.10.2.0/24", "10.10.3.0/24"]
   private_subnet_cidrs = ["10.10.11.0/24", "10.10.22.0/24", "10.10.33.0/24"]
 }
-
-// Note, you can output values from main module file only
-output "dev_public_subnet_ids" {
-  value = module.vpc-dev.public_subnet_ids
-}
-
-output "dev_private_subnet_ids" {
-  value = module.vpc-dev.private_subnet_ids
-}
-
-output "prod_public_subnet_ids" {
-  value = module.vpc-prod.public_subnet_ids
-}
-
-output "prod_private_subnet_ids" {
-  value = module.vpc-prod.private_subnet_ids
-}
